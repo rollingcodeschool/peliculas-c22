@@ -6,10 +6,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="grow">
         <FormMovie></FormMovie>
       </main>
-
       <Footer />
     </>
   );

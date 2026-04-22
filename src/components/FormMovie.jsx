@@ -3,37 +3,37 @@ import GridMovie from "./GridMovie";
 const FormMovie = () => {
   return (
     <section>
-      <form>
+      <form className="border border-slate-300 dark:border-slate-700 p-8 rounded-lg bg-white dark:bg-slate-800 transition-colors">
         {/* Campo: Nombre */}
-        <div>
-          <label>Nombre película</label>
-          <input type="text" placeholder="Ej: Titanic" name="nombrePelicula" />
+        <div className="mb-4">
+          <label className="block mb-1 font-semibold text-slate-700 dark:text-slate-200">Nombre película</label>
+          <input type="text" placeholder="Ej: Titanic"  className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80"name="nombrePelicula" />
           {/* <p className="text-sm text-red-600 mt-2">Un error posible</p> */}
-          <p>ocurrio un error</p>
+          <p className="text-sm text-red-600 mt-2">ocurrio un error</p>
         </div>
 
         {/* Campo: Descripción */}
         <div>
           <label>Descripción</label>
-          <textarea rows="3" placeholder="Resumen de la trama..." />
-          <p>ocurrio un error</p>
+          <textarea rows="3" placeholder="Resumen de la trama..." className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80"/>
+          <p className="text-sm text-red-600 mt-2">ocurrio un error</p>
         </div>
 
         {/* Campo: Categoría */}
         <div>
           <label>Categoría</label>
-          <select name="categoria">
+          <select name="categoria"   className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80">
             <option value="">Seleccione una categoría</option>
             <option value="aventura">Aventura</option>
             <option value="comedia">Comedia</option>
             <option value="romance">Romance</option>
             <option value="terror">Terror</option>
           </select>
-          <p>ocurrio un error</p>
+          <p className="text-sm text-red-600 mt-2">ocurrio un error</p>
         </div>
 
         {/* Botón */}
-        <button type="submit">Enviar Película</button>
+        <button type="submit"  className="bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700 transition-colors w-full sm:w-auto cursor-pointer">Enviar Película</button>
       </form>
       <GridMovie></GridMovie>
     </section>

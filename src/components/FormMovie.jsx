@@ -1,18 +1,25 @@
 import { useForm } from "react-hook-form";
 import GridMovie from "./GridMovie";
+import { useState } from "react";
 
 const FormMovie = () => {
+  const [peliculas, setPeliculas] = useState([])
+
   const {
     register,
     handleSubmit, 
     formState: { errors },
   } = useForm()
 
+ 
   const crearPelicula = (pelicula, e)=>{
+    const nuevaPelicula = {
+      ...pelicula, id:crypto.randomUUID()
+    }
     console.log(pelicula)
     console.log(e)
     //guardar pelicula en el array
-
+    setPeliculas([...peliculas, nuevaPelicula])
     //limpiar el formulario
     e.target.reset()
   }

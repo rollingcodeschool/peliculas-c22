@@ -36,8 +36,22 @@ const FormMovie = () => {
         {/* Campo: Descripción */}
         <div>
           <label>Descripción</label>
-          <textarea rows="3" placeholder="Resumen de la trama..." className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80"/>
-          <p className="text-sm text-red-600 mt-2">ocurrio un error</p>
+          <textarea rows="3" placeholder="Resumen de la trama..." className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80" {...register('descripcion', {
+            required: 'La descripción es un dato obligatorio',
+            minLength:{
+              value: 5,
+              message: 'La descripción debe contener como minimo 5 caracteres'
+            },
+            maxLength:{
+              value: 300,
+              message: 'La descripción debe contener como maximo 300 caracteres'
+            },
+            pattern:{
+              value: /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/,
+              message: 'La descripción solo puede contener caracteres de la A a la Z y numeros.'
+            }
+          })}/>
+          <p className="text-sm text-red-600 mt-2">{errors.descripcion?.message}</p>
         </div>
 
         {/* Campo: Categoría */}

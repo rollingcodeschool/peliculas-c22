@@ -8,13 +8,18 @@ const FormMovie = () => {
     formState: { errors },
   } = useForm()
 
-  const crearPelicula = (pelicula)=>{
+  const crearPelicula = (pelicula, e)=>{
     console.log(pelicula)
+    console.log(e)
+    //guardar pelicula en el array
+
+    //limpiar el formulario
+    e.target.reset()
   }
 
   return (
     <section>
-      <form className="border border-slate-300 dark:border-slate-700 p-8 rounded-lg bg-white dark:bg-slate-800 transition-colors" onSubmit={handleSubmit(crearPelicula)}>
+      <form className="border border-slate-300 dark:border-slate-700 p-8 rounded-lg bg-white dark:bg-slate-800 transition-colors" onSubmit={handleSubmit((pelicula, e)=> crearPelicula(pelicula, e))}>
 
         <div className="mb-4">
           <label className="block mb-1 font-semibold text-slate-700 dark:text-slate-200">Nombre película</label>

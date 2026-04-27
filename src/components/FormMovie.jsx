@@ -1,15 +1,36 @@
+import { useForm } from "react-hook-form";
 import GridMovie from "./GridMovie";
 
 const FormMovie = () => {
+  const {
+    register,
+    handleSubmit, 
+    formState: { errors },
+  } = useForm()
+
+  const crearPelicula = (pelicula)=>{
+    console.log(pelicula)
+  }
+
   return (
     <section>
-      <form className="border border-slate-300 dark:border-slate-700 p-8 rounded-lg bg-white dark:bg-slate-800 transition-colors">
-        {/* Campo: Nombre */}
+      <form className="border border-slate-300 dark:border-slate-700 p-8 rounded-lg bg-white dark:bg-slate-800 transition-colors" onSubmit={handleSubmit(crearPelicula)}>
+
         <div className="mb-4">
           <label className="block mb-1 font-semibold text-slate-700 dark:text-slate-200">Nombre película</label>
-          <input type="text" placeholder="Ej: Titanic"  className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80"name="nombrePelicula" />
+          <input type="text" placeholder="Ej: Titanic"  className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80"name="nombrePelicula" {...register('nombrePelicula', {
+            required: 'El nombre de la pelicula es un dato obligatorio',
+            minLength:{
+              value: 2,
+              message: 'El nombre de la pelicula debe contener como minimo 2 caracteres'
+            },
+            maxLength:{
+              value: 50,
+              message: 'El nombre de la pelicula debe contener como maximo 50 caracteres'
+            }
+          })}/>
           {/* <p className="text-sm text-red-600 mt-2">Un error posible</p> */}
-          <p className="text-sm text-red-600 mt-2">ocurrio un error</p>
+          <p className="text-sm text-red-600 mt-2">{errors.nombrePelicula?.message}</p>
         </div>
 
         {/* Campo: Descripción */}

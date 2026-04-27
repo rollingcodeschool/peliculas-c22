@@ -57,14 +57,14 @@ const FormMovie = () => {
         {/* Campo: Categoría */}
         <div>
           <label>Categoría</label>
-          <select name="categoria"   className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80">
+          <select name="categoria"   className="w-full border border-slate-300 dark:border-slate-600 rounded p-2 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/80" {...register('categoria', {required:'Debes seleccionar una categoria'})}>
             <option value="">Seleccione una categoría</option>
             <option value="aventura">Aventura</option>
             <option value="comedia">Comedia</option>
             <option value="romance">Romance</option>
             <option value="terror">Terror</option>
           </select>
-          <p className="text-sm text-red-600 mt-2">ocurrio un error</p>
+          <p className="text-sm text-red-600 mt-2">{errors.categoria?.message}</p>
         </div>
 
         {/* Botón */}
